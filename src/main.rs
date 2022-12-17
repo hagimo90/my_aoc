@@ -16,10 +16,10 @@ fn calculate_mandelbrot(iters:usize,x_min:f64,x_max:f64,y_min:f64,y_max:f64,widt
 
     let set_height = y_max - y_min;
     let set_width = x_max - x_min;
-    let mut rows = Vec::new();
+    let mut rows = Vec::with_capacity(width);
 
     for img_y in 0..height {
-        let mut row = Vec::new();
+        let mut row = Vec::with_capacity(height);
         for img_x in 0..width {
             let width_ = width as f64;
             let height_ = height as f64;
@@ -45,13 +45,13 @@ fn render_mandelbrot (escape_vals :Vec<Vec<usize>> ) {
         for column in row {
             let val = match column {
                 0..=2 => ' ',
-                2..=5 => '.',
-                5..=10 => ':',
+                3..=5 => '.',
+                6..=10 => ':',
                 11..=30 => '*',
-                30..=100 => 'x',
-                100..=200 => '%',
-                200..=400 => '$',
-                400..=700 => '#',
+                31..=100 => 'x',
+                101..=200 => '%',
+                201..=400 => '$',
+                401..=700 => '#',
                 _ => '@',
             };
             line.push(val);
@@ -62,6 +62,6 @@ fn render_mandelbrot (escape_vals :Vec<Vec<usize>> ) {
     }
 }
 fn main() {
-    let mandelbrot = calculate_mandelbrot(1000,-2.5,1.0,-1.1,1.1,100,30);
+    let mandelbrot = calculate_mandelbrot(1000,-2.5,1.0,-1.1,1.1,140,20);
     render_mandelbrot(mandelbrot );
 }
