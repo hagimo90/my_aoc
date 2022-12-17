@@ -1,3 +1,5 @@
+use std::{thread, time};
+
 use num::complex::Complex;
 fn mendelbrot_at_point(cx:f64,cy:f64,iters:usize) -> usize{
 
@@ -64,4 +66,7 @@ fn render_mandelbrot (escape_vals :Vec<Vec<usize>> ) {
 fn main() {
     let mandelbrot = calculate_mandelbrot(1000,-2.5,1.0,-1.1,1.1,140,20);
     render_mandelbrot(mandelbrot );
+    let pause = time::Duration::from_millis(5000);
+
+    thread::sleep(pause);
 }
