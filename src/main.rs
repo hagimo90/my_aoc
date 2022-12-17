@@ -62,6 +62,6 @@ fn render_mandelbrot (escape_vals :Vec<Vec<usize>> ) {
     }
 }
 fn main() {
-    let mandelbrot = calculate_mandelbrot(1000,-2.0,1.0,-1.1,1.1,50,50);
+    let mandelbrot = calculate_mandelbrot(1000,-2.5,1.0,-1.1,1.1,100,30);
     render_mandelbrot(mandelbrot );
 }
